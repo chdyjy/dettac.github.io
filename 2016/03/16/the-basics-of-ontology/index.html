@@ -1,0 +1,831 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="本体,Jena," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="本体基础知识本体建模的核心是明确领域中的概念、概念的属性和约束条件、概念之间的层次关系等。本体的建模原语主要有类、关系、函数、公理和实例等5种。
+
+类：通常也成为概念，类的含义很广泛，可以指任何事物，如工作描述、功能、行为、策略和推理过程等等。类中间的关系有四种：
+part-of：A 属于 B的一部分
+kind-of：A 属于 B的另一种
+instance-of：A是B的实例
+attribute-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本体基础知识（一）">
+<meta property="og:url" content="http://detac.github.io/2016/03/16/the-basics-of-ontology/index.html">
+<meta property="og:site_name" content="哦，好人">
+<meta property="og:description" content="本体基础知识本体建模的核心是明确领域中的概念、概念的属性和约束条件、概念之间的层次关系等。本体的建模原语主要有类、关系、函数、公理和实例等5种。
+
+类：通常也成为概念，类的含义很广泛，可以指任何事物，如工作描述、功能、行为、策略和推理过程等等。类中间的关系有四种：
+part-of：A 属于 B的一部分
+kind-of：A 属于 B的另一种
+instance-of：A是B的实例
+attribute-">
+<meta property="og:updated_time" content="2016-03-16T12:28:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="本体基础知识（一）">
+<meta name="twitter:description" content="本体基础知识本体建模的核心是明确领域中的概念、概念的属性和约束条件、概念之间的层次关系等。本体的建模原语主要有类、关系、函数、公理和实例等5种。
+
+类：通常也成为概念，类的含义很广泛，可以指任何事物，如工作描述、功能、行为、策略和推理过程等等。类中间的关系有四种：
+part-of：A 属于 B的一部分
+kind-of：A 属于 B的另一种
+instance-of：A是B的实例
+attribute-">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://detac.github.io/2016/03/16/the-basics-of-ontology/"/>
+
+
+  <title> 本体基础知识（一） | 哦，好人 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c3a2fa4f6021b515eddaaf94f9b2c3d0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">哦，好人</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Yang的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                本体基础知识（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-16T20:24:02+08:00" content="2016-03-16">
+              2016-03-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/16/the-basics-of-ontology/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/16/the-basics-of-ontology/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/16/the-basics-of-ontology/" class="leancloud_visitors" data-flag-title="本体基础知识（一）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="本体基础知识"><a href="#本体基础知识" class="headerlink" title="本体基础知识"></a>本体基础知识</h2><p>本体建模的核心是明确领域中的概念、概念的属性和约束条件、概念之间的层次关系等。本体的<strong>建模原语</strong>主要有类、关系、函数、公理和实例等5种。</p>
+<ul>
+<li><strong>类</strong>：通常也成为概念，类的含义很广泛，可以指任何事物，如工作描述、功能、行为、策略和推理过程等等。类中间的关系有四种：<ol>
+<li>part-of：A 属于 B的一部分</li>
+<li>kind-of：A 属于 B的另一种</li>
+<li>instance-of：A是B的实例</li>
+<li>attribute-of：A是B的属性</li>
+</ol>
+</li>
+<li><strong>关系</strong>：代表了在领域中概念之间的交互作用。形式上定义为n维笛卡儿积的子R:C<sub>1</sub>×C<sub>2</sub>×⋯×C<sub>n</sub></li>
+<li><strong>函数</strong>：一类特殊的关系,这种关系中,前n一1个元素可以唯一决定第n个元素,形式化的定义为F: C<sub>1</sub>×C<sub>2</sub>×⋯×C<sub>n-1</sub>➡ C<sub>n</sub></li>
+<li><strong>公理</strong>：表示永真字句</li>
+<li><p><strong>实例</strong>：代表元素，是概念的具体化</p>
+<a id="more"></a>
+<h2 id="XML-amp-amp-RDF"><a href="#XML-amp-amp-RDF" class="headerlink" title="XML &amp;&amp; RDF"></a>XML &amp;&amp; RDF</h2><p>本体既可以通过XML来表示，也可以通过RDF来表示。</p>
+</li>
+<li><p>XML(Extensible Markup Language)：即可扩展标记语言，经常见到</p>
+</li>
+<li>RDF(Resource Description Framework)：资源描述框架，用于用于描述Web资源的标记语言。</li>
+</ul>
+<p>二者的区别是：</p>
+<ol>
+<li><strong>模式不同</strong>：XML数据模式是一个文本可扩展语言，相比之下，RDF有一个非常简单的模式，即二元关系模式。当然，任何的RDF声明形式都可以用XML来表示，但XML是被设定为固定的、树状的文本，在描述数据元上缺乏一定的灵活性。RDF模式却是有足够的灵活来描述这种主观的、分布式的、用不同形式来表达的元数据。</li>
+<li><strong>所使用资源不同</strong>：XML中所谈到的节点，是XML文档中的节点，尤其是在文档结构中特定之处。在RDF中，节点不在是节点本身了，而是任何其他可用URIS标识的资源，因此RDF是一种元数据语言。</li>
+<li><strong>语义不同</strong>：XML Schema最初的语意解释是限制在XML文档中的，它是隐含的。RDF原本就是语意解释，用于对那些不能够用树形结构来很好建模的知识进行建模。总之，XML/XML Schema是数据建模语言，RDF是元数据建模语言，当元数据需要编码成数据时，XML语法就非常的有用，如果纯用XML语言来进行元数据建模那么在灵活性就会受到阻碍。</li>
+</ol>
+<h2 id="Jena-API-or-OWL-API-or-Protege-OWL-API"><a href="#Jena-API-or-OWL-API-or-Protege-OWL-API" class="headerlink" title="Jena API or OWL API or Protege-OWL API?"></a>Jena API or OWL API or Protege-OWL API?</h2><p>我们可以通过一些API来对本体进行操作，但是在学习过程中会出现如何选择API的考虑。</p>
+<p>我的感受是Jena的中文文档更多，学习起来比较方便，而OWLapi中文文档目前较少，不过github测试文档很详细。</p>
+<blockquote>
+<p><a href="https://github.com/owlcs/owlapi/wiki/Documentation" target="_blank" rel="external">OWL API Documentation</a><br><a href="https://github.com/owlcs/owlapi/blob/version4/contract/src/test/java/org/semanticweb/owlapi/examples/Examples.java" target="_blank" rel="external">Examples</a></p>
+</blockquote>
+<p>而semanticweb中的解释比较好，英语渣，就不翻译了，直接摘出来</p>
+<blockquote>
+<p><a href="http://answers.semanticweb.com/questions/2568/jena-api-or-owl-api-or-protege-owl-api" target="_blank" rel="external">semanticweb 中的答案</a></p>
+<p>If you want to do something with the data graphs, then there are some APIs available that will allow you to find data, modify data, add new data, etc. Jena API is most flexible, as it covers all of RDF and therefore can be used to create OWL constructs, axioms and run inferences. The OWL API bypasses RDF to provide services based on OWL. It is not RDF-friendly and you won’t be applying SPARQL queries any time soon. I know little about the Protégé-API, but I’ guessing it is an extension of the OWL API and therefore subsumes its limitations. The APIs will also provide features to create file serializations from the internal data store.</p>
+<p>These APIs are pretty low-level and GUIs are available that use the APIs to manipulate RDF/RDFS/OWL data with a user interface. For example, adding a property value to a resource in a GUI form creates a triple representing this fact. GUI representations of familiar subclass trees manages the class and instance data structures for you. OWL axioms are represented properly. TopBraid Composer-Free (which uses Jena) and Protégé (OWL API in version 4.x, as I understand it) are examples of GUIs. These can also be seen as RDF browsers because they not only parse and edit the data, but act as a server for the data with features to browse and perhaps query the data. They also take care of reasoning details such as applying the appropriate reasoning engine (RDFS, RDFS+, flavors of OWL/OWL 2, SPIN, etc.) and displaying the union of asserted and inferred data.</p>
+<p>Insofar as querying and manipulating the data is concerned, another consideration is SPARQL support. SPARQL is to RDF what SQL is to relational models, meaning not just queries but data insert and modify. This has been true since SPARQL CONSTRUCT, but will become stronger once the SPARQL 1.1 Update syntax stabilizes. Flexible forms of reasoning can be accomplished with SPARQL (CONSTRUCT returns a graph that can be interpreted as inferred triples), and non-monotonic reasoning (both inserting and deleting facts) can be accomplished by using SPARQL 1.1 Update. TopBraid’s SPIN and SPARQLMotion are examples of using SPARQL as a standard way to manipulate data that is at a higher level of abstraction (queries instead of a Java API).</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/本体/" rel="tag">#本体</a>
+          
+            <a href="/tags/Jena/" rel="tag">#Jena</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/05/Java-Cash-Register/" rel="next" title="【ThoughtWorks】面试题目“收银机”的Java实现">
+                <i class="fa fa-chevron-left"></i> 【ThoughtWorks】面试题目“收银机”的Java实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/20/LeetCode-Two-Sum/" rel="prev" title="Leetcode 第一题 Two Sum">
+                Leetcode 第一题 Two Sum <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/16/the-basics-of-ontology/"
+           data-title="本体基础知识（一）" data-url="http://detac.github.io/2016/03/16/the-basics-of-ontology/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="//cdn.ohao.ren/avatar.jpg"
+               alt="Yang" />
+          <p class="site-author-name" itemprop="name">Yang</p>
+          <p class="site-description motion-element" itemprop="description">原yangjiayu.com|yanng.cn，现在搬到了这里。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dettac" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/mryangswb" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chdYang" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本体基础知识"><span class="nav-number">1.</span> <span class="nav-text">本体基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-amp-amp-RDF"><span class="nav-number">2.</span> <span class="nav-text">XML && RDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jena-API-or-OWL-API-or-Protege-OWL-API"><span class="nav-number">3.</span> <span class="nav-text">Jena API or OWL API or Protege-OWL API?</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"dettac"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OyAVnudpUWCWyVkeL2UfPXnH-gzGzoHsz", "O0sA3RGIH81eC2zgjKBui60e");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

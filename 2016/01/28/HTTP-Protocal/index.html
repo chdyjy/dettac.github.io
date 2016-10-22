@@ -1,0 +1,829 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="IT,HTTP,Protocal," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="HTTP协议简介在网络中，我们所说的一次请求就是向目标服务器发送一串文本，这些文本都采用特定的协议。一般来说，常见的网络通信协议有HTTP、TCP、UDP 等，这里我们只介绍HTTP协议。  
+HTTP全称是HyperText Transfer Protocal，即：超文本传输协议。HTTP是应用层协议，当我们使用WEB浏览器浏览网页的时候，浏览器和服务器之间就会通过HTTP协议进行数据的发送和接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP Protocal">
+<meta property="og:url" content="http://detac.github.io/2016/01/28/HTTP-Protocal/index.html">
+<meta property="og:site_name" content="哦，好人">
+<meta property="og:description" content="HTTP协议简介在网络中，我们所说的一次请求就是向目标服务器发送一串文本，这些文本都采用特定的协议。一般来说，常见的网络通信协议有HTTP、TCP、UDP 等，这里我们只介绍HTTP协议。  
+HTTP全称是HyperText Transfer Protocal，即：超文本传输协议。HTTP是应用层协议，当我们使用WEB浏览器浏览网页的时候，浏览器和服务器之间就会通过HTTP协议进行数据的发送和接">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-0.png">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/2.pic.jpg">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/1.pic.jpg">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/3.pic.jpg">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-1.png">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/4.pic.jpg">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-2.png">
+<meta property="og:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-3.png">
+<meta property="og:updated_time" content="2016-02-16T08:37:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP Protocal">
+<meta name="twitter:description" content="HTTP协议简介在网络中，我们所说的一次请求就是向目标服务器发送一串文本，这些文本都采用特定的协议。一般来说，常见的网络通信协议有HTTP、TCP、UDP 等，这里我们只介绍HTTP协议。  
+HTTP全称是HyperText Transfer Protocal，即：超文本传输协议。HTTP是应用层协议，当我们使用WEB浏览器浏览网页的时候，浏览器和服务器之间就会通过HTTP协议进行数据的发送和接">
+<meta name="twitter:image" content="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-0.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://detac.github.io/2016/01/28/HTTP-Protocal/"/>
+
+
+  <title> HTTP Protocal | 哦，好人 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c3a2fa4f6021b515eddaaf94f9b2c3d0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">哦，好人</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Yang的博客</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTTP Protocal
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-28T01:22:13+08:00" content="2016-01-28">
+              2016-01-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/28/HTTP-Protocal/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/28/HTTP-Protocal/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/01/28/HTTP-Protocal/" class="leancloud_visitors" data-flag-title="HTTP Protocal">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTTP协议简介"><a href="#HTTP协议简介" class="headerlink" title="HTTP协议简介"></a>HTTP协议简介</h1><p>在网络中，我们所说的一次请求就是向目标服务器发送一串文本，这些文本都采用特定的协议。一般来说，常见的网络通信协议有HTTP、TCP、UDP 等，这里我们只介绍HTTP协议。  </p>
+<p>HTTP全称是HyperText Transfer Protocal，即：超文本传输协议。HTTP是应用层协议，当我们使用WEB浏览器浏览网页的时候，浏览器和服务器之间就会通过HTTP协议进行数据的发送和接收。我们先来看看HTTP协议的请求包结构：<br><a id="more"></a><br><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-0.png" alt="HTTP请求包"></p>
+<p>上图第一行叫做“状态行”，最后一行是响应包体（当然实际中它一般不是一行，我们只是这里这样表示），中间部分称为响应头部。如果我们使用类似Fiddler等抓包工具，可以详细的看到每一次浏览器的WEB请求的数据包。下面通过一个详细的HTTP包来对比了解：  </p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/2.pic.jpg" alt="HTTP抓包">  </p>
+<p>在上图中，中间部分是fiddler捕获了HTTP数据包的16进制显示，右边对应的是ASCII码对应的字符，组合起来也就构成了一次完整的HTTP请求包。请求包格式化显示后如下：</p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/1.pic.jpg" alt="HTTP抓包">  </p>
+<p>继续以登录学信息门户为例，举一个POST请求的HTTP请求包。</p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/3.pic.jpg" alt="HTTP抓包">  </p>
+<p>浏览器对服务器发出请求包后，服务器经过处理就会返回一个HTTP响应包。HTTP响应包的结构为：</p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-1.png" alt="HTTP请求包"></p>
+<p>继续举一个实际例子。针对刚才的登录请求包，服务器返回的响应包是：</p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/4.pic.jpg" alt="HTTP抓包">  </p>
+<p>很显然，我们随便输一个用户名和密码，服务器肯定会拒绝的:)  </p>
+<p>HTTP请求方法（所有方法全为大写）有多种，各个方法的解释如下：     </p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-2.png" alt="HTTP抓包">  </p>
+<p>可能大家也会注意到，我们虽然使用错误的账号和密码进行登录，服务器返回的响应报依然是“200”，描述是“ok”。是因为状态码描述的是本次请求的状态，而非请求结果的正确与否。状态码由三位数字组成，第一个数字定义了响应的类别，且有五种可能取值：  </p>
+<ul>
+<li>1xx：指示信息–表示请求已接收，继续处理  </li>
+<li>2xx：成功–表示请求已被成功接收、理解、接受  </li>
+<li>3xx：重定向–要完成请求必须进行更进一步的操作  </li>
+<li>4xx：客户端错误–请求有语法错误或请求无法实现   </li>
+<li>5xx：服务器端错误–服务器未能实现合法的请求  </li>
+</ul>
+<p>我们在实际中经常用到的状态码和对应的说明如下：</p>
+<p><img src="http://7xqj6b.com1.z0.glb.clouddn.com/html-protocal/QQ20160128-3.png" alt="HTTP抓包">  </p>
+<p>在实际中，常用到的只有GET和POST两种请求方法。</p>
+<p>在网络请求中，我们经常需要附带一些请求参数，那么如何使用GET方法和POST方法传输参数呢？</p>
+<p>GET方法中的参数是直接附带在URL中的，像这样：<br><a href="http://www.abc.com/?params1=val1&amp;params2=val2" target="_blank" rel="external">http://www.abc.com/?params1=val1&amp;params2=val2</a><br>以“?”开头，以“&amp;”连接各个请求参数，每个请求参数通过“key=value”这样的形式建立关系。如果数据是英文字母或数字，原样发送，如果是空格，转换为+，如果是中文或其他字符，则直接把字符串用BASE64加密。</p>
+<p>POST方法中的参数是经过编码后放在HTTP包的请求体中的。编码方式有“x-www-form-urlencoded”和“form-data”。</p>
+<p>x-www-form-urlencoded一般用来传输“key=value”键值对，如：<br>user=123&amp;pwd=456</p>
+<p>form-data与之不同的是可以传输二进制，在我们需要传输一些如图片等文件时，就需要使用form-data。</p>
+<p>根据HTTP规范[1]， GET方法和POST方法的区别是：</p>
+<ul>
+<li>GET用于信息获取，同一个URL请求只会返回同一个结果。这里的“同一个”并不是指返回相同的结果，比如我们访问新闻网站，最新的新闻可能会更新或改变，但这个URL始终是返回的最新新闻这一栏目。</li>
+<li>POST表示可能会修改服务器上资源的请求。就像我们在新闻网站上评论应该通过POST请求实现，因为提交评论后站点的资源已经不同了，或者说被修改了[2]。</li>
+<li>由于GET请求被放在了URL中，我们直接复制URL发送给其他人，这样其他人就可以打开我们想让他看到的页面，而POST请求是做不到这一点的，是因为POST请求的内容并不在URL中。</li>
+<li>POST请求相对来说是不可见的，但不可见并不代表“安全”。HTTP协议中数据包均采用明文传输，一旦数据包被捕获，无论是GET请求还是POST请求都很容易清楚的被看到（实例可以参考我们上面的截图）。</li>
+</ul>
+<p>由于一些浏览器对URL的长度做了限制，如过需要传输较多的数据，一般建议使用POST请求。</p>
+<p>注：<br>[1] Hypertext Transfer Protocol – HTTP/1.1: <a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank" rel="external">https://www.w3.org/Protocols/rfc2616/rfc2616.html</a><br>[2] 《浅谈HTTP中Get与Post的区别》：<a href="http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html" target="_blank" rel="external">http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT/" rel="tag">#IT</a>
+          
+            <a href="/tags/HTTP/" rel="tag">#HTTP</a>
+          
+            <a href="/tags/Protocal/" rel="tag">#Protocal</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/23/Mac-nginx-start/" rel="next" title="Mac下安装和使用nginx">
+                <i class="fa fa-chevron-left"></i> Mac下安装和使用nginx
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/02/Android-AsyncTask/" rel="prev" title="使用AsyncTask进行异步任务处理">
+                使用AsyncTask进行异步任务处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/28/HTTP-Protocal/"
+           data-title="HTTP Protocal" data-url="http://detac.github.io/2016/01/28/HTTP-Protocal/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="//cdn.ohao.ren/avatar.jpg"
+               alt="Yang" />
+          <p class="site-author-name" itemprop="name">Yang</p>
+          <p class="site-description motion-element" itemprop="description">原yangjiayu.com|yanng.cn，现在搬到了这里。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dettac" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/mryangswb" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/chdYang" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议简介"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议简介</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"dettac"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OyAVnudpUWCWyVkeL2UfPXnH-gzGzoHsz", "O0sA3RGIH81eC2zgjKBui60e");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="杨加玉, IT, 技术分享, Web开发" />
+  <meta name="keywords" content="IT,ThinkPHP," />
 
 
 
@@ -84,15 +84,18 @@
 
 
 
-<meta name="description" content="原yangjiayu.com|yanng.cn，现在搬到了这里。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="哦，好人">
-<meta property="og:url" content="http://detac.github.io/archives/2016/10/index.html">
+<meta name="description" content="问题最近在用Thinkphp 3.1 版本给学校写一个志愿者平台，在定向页面中遇到定向页面出错的问题。如图，每当使用 $this-&amp;gt;error() 或者 $this-&amp;gt;success() 时候总是会出错，调试模式显示出错位置如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ThinkPHP 3.1.3 this->error() 出错无法解析解决办法">
+<meta property="og:url" content="http://detac.github.io/2015/11/14/thinkphp-template-error/index.html">
 <meta property="og:site_name" content="哦，好人">
-<meta property="og:description" content="原yangjiayu.com|yanng.cn，现在搬到了这里。">
+<meta property="og:description" content="问题最近在用Thinkphp 3.1 版本给学校写一个志愿者平台，在定向页面中遇到定向页面出错的问题。如图，每当使用 $this-&amp;gt;error() 或者 $this-&amp;gt;success() 时候总是会出错，调试模式显示出错位置如下：">
+<meta property="og:image" content="http://cdn.ohao.ren/thinkphp-493681447504926.jpg">
+<meta property="og:updated_time" content="2016-02-16T08:38:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="哦，好人">
-<meta name="twitter:description" content="原yangjiayu.com|yanng.cn，现在搬到了这里。">
+<meta name="twitter:title" content="ThinkPHP 3.1.3 this->error() 出错无法解析解决办法">
+<meta name="twitter:description" content="问题最近在用Thinkphp 3.1 版本给学校写一个志愿者平台，在定向页面中遇到定向页面出错的问题。如图，每当使用 $this-&amp;gt;error() 或者 $this-&amp;gt;success() 时候总是会出错，调试模式显示出错位置如下：">
+<meta name="twitter:image" content="http://cdn.ohao.ren/thinkphp-493681447504926.jpg">
 
 
 
@@ -113,10 +116,10 @@
 
 
 
-  <link rel="canonical" href="http://detac.github.io/archives/2016/10/"/>
+  <link rel="canonical" href="http://detac.github.io/2015/11/14/thinkphp-template-error/"/>
 
 
-  <title> 归档 | 哦，好人 </title>
+  <title> ThinkPHP 3.1.3 this->error() 出错无法解析解决办法 | 哦，好人 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +150,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -235,103 +238,146 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 22 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/04/LeetCode-6-zigzag-conversion/" itemprop="url">
-              
-                <span itemprop="name">LeetCode第六题——字符串的Z字型转化</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-04T19:43:40+08:00"
-              content="2016-10-04" >
-          10-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/03/JianzhiOffer-make-a-queue-with-two-stacks/" itemprop="url">
-              
-                <span itemprop="name">剑指offer题目：用两个栈实现队列</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-03T23:21:19+08:00"
-              content="2016-10-03" >
-          10-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ThinkPHP 3.1.3 this->error() 出错无法解析解决办法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-11-14T10:14:05+08:00" content="2015-11-14">
+              2015-11-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/14/thinkphp-template-error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/14/thinkphp-template-error/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/11/14/thinkphp-template-error/" class="leancloud_visitors" data-flag-title="ThinkPHP 3.1.3 this->error() 出错无法解析解决办法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>最近在用Thinkphp 3.1 版本给学校写一个志愿者平台，在定向页面中遇到定向页面出错的问题。<br>如图，每当使用 <code>$this-&gt;error()</code> 或者 <code>$this-&gt;success()</code> 时候总是会出错，调试模式显示出错位置如下：<br><img src="http://cdn.ohao.ren/thinkphp-493681447504926.jpg" alt="thinkphp error"><br><a id="more"></a><br>明显可以发现 是default 和layout.html中间少了一个斜杠导致。  </p>
+<h2 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h2><p>按照提示找到Thinkphp/Lib/Template/ThinkTemplate.class.php  112行左右处,修改为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$layoutFile = THEME_PAHT.&apos;/&apos;.C(&apos;LAYOUT_NAME&apos;).$this-&gt;config[&apos;template_suffix&apos;];</div></pre></td></tr></table></figure></p>
+<p> 即可。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT/" rel="tag">#IT</a>
+          
+            <a href="/tags/ThinkPHP/" rel="tag">#ThinkPHP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/10/some-JavaScript-features/" rel="next" title="JavaScript的一些特性（一）">
+                <i class="fa fa-chevron-left"></i> JavaScript的一些特性（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/23/Mac-nginx-start/" rel="prev" title="Mac下安装和使用nginx">
+                Mac下安装和使用nginx <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -339,6 +385,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/11/14/thinkphp-template-error/"
+           data-title="ThinkPHP 3.1.3 this->error() 出错无法解析解决办法" data-url="http://detac.github.io/2015/11/14/thinkphp-template-error/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -358,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="//cdn.ohao.ren/avatar.jpg"
@@ -438,6 +501,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法："><span class="nav-number">2.</span> <span class="nav-text">解决办法：</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -541,11 +615,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   

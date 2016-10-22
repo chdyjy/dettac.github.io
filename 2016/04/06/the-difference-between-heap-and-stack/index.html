@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="杨加玉, IT, 技术分享, Web开发" />
+  <meta name="keywords" content="IT,数据结构," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="原yangjiayu.com|yanng.cn，现在搬到了这里。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="哦，好人">
-<meta property="og:url" content="http://detac.github.io/archives/2016/10/index.html">
+<meta name="description" content="应该算是比较经常会问到的面试题，我们需要从数据结构中的栈、数据结构中的堆、内存栈和内存堆四个方面来回答。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆与栈的区别">
+<meta property="og:url" content="http://detac.github.io/2016/04/06/the-difference-between-heap-and-stack/index.html">
 <meta property="og:site_name" content="哦，好人">
-<meta property="og:description" content="原yangjiayu.com|yanng.cn，现在搬到了这里。">
+<meta property="og:description" content="应该算是比较经常会问到的面试题，我们需要从数据结构中的栈、数据结构中的堆、内存栈和内存堆四个方面来回答。">
+<meta property="og:updated_time" content="2016-04-13T10:41:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="哦，好人">
-<meta name="twitter:description" content="原yangjiayu.com|yanng.cn，现在搬到了这里。">
+<meta name="twitter:title" content="堆与栈的区别">
+<meta name="twitter:description" content="应该算是比较经常会问到的面试题，我们需要从数据结构中的栈、数据结构中的堆、内存栈和内存堆四个方面来回答。">
 
 
 
@@ -113,10 +114,10 @@
 
 
 
-  <link rel="canonical" href="http://detac.github.io/archives/2016/10/"/>
+  <link rel="canonical" href="http://detac.github.io/2016/04/06/the-difference-between-heap-and-stack/"/>
 
 
-  <title> 归档 | 哦，好人 </title>
+  <title> 堆与栈的区别 | 哦，好人 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +148,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -235,103 +236,181 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 22 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/04/LeetCode-6-zigzag-conversion/" itemprop="url">
-              
-                <span itemprop="name">LeetCode第六题——字符串的Z字型转化</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-04T19:43:40+08:00"
-              content="2016-10-04" >
-          10-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/03/JianzhiOffer-make-a-queue-with-two-stacks/" itemprop="url">
-              
-                <span itemprop="name">剑指offer题目：用两个栈实现队列</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-03T23:21:19+08:00"
-              content="2016-10-03" >
-          10-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                堆与栈的区别
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-06T18:37:30+08:00" content="2016-04-06">
+              2016-04-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/06/the-difference-between-heap-and-stack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/the-difference-between-heap-and-stack/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/06/the-difference-between-heap-and-stack/" class="leancloud_visitors" data-flag-title="堆与栈的区别">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>应该算是比较经常会问到的面试题，我们需要从<strong>数据结构中的栈</strong>、<strong>数据结构中的堆</strong>、<strong>内存栈</strong>和<strong>内存堆</strong>四个方面来回答。</p>
+<a id="more"></a>
+<h2 id="数据结构中的栈"><a href="#数据结构中的栈" class="headerlink" title="数据结构中的栈"></a>数据结构中的栈</h2><p>数据结构中的栈是一种先进后出（First in,Last out）的线性数据结构，主要有push（O(1)）、peek（O(1)）和pop（O(1)）三种方法，对应JDK中的Stack（顺序栈）一级LinkedList（链式栈）。</p>
+<h2 id="数据结构中的堆"><a href="#数据结构中的堆" class="headerlink" title="数据结构中的堆"></a>数据结构中的堆</h2><p>数据结构中的堆是一种用数组存储完全二叉树的非线性数据结构，又被称为优先队列，分为最小堆和最大堆，对应JDK中Priorigy Queue，能在logN时间内完成插入（offer）及（poll）操作。</p>
+<h2 id="内存栈"><a href="#内存栈" class="headerlink" title="内存栈"></a>内存栈</h2><p>内存栈，又称栈内存，一般由编译器自动分配和释放，主要有三个特点：</p>
+<ol>
+<li>函数的压栈、弹出过程符合先进后出的原则；</li>
+<li>无论是函数还是变量，都是从高地址向低地址分配；</li>
+<li>函数、变量的分配在运行前就已经完成了，运行时的回收是及时的，且速度快，时间复杂度O(1)。</li>
+</ol>
+<h2 id="内存堆"><a href="#内存堆" class="headerlink" title="内存堆"></a>内存堆</h2><p>内存堆，又称堆内存，在Java中堆内存用来存放由new创建的对象和数组，主要有以下特点：</p>
+<ol>
+<li>堆内存，是一个静态链表；</li>
+<li>在运行期间进行分配，分配方式是从低地址向高地址进行扩展；</li>
+<li>内存块有已使用和闲置量中状态；</li>
+<li>内存分配过程就是将闲置的内存块标记为已使用状态，回收过程则相反；</li>
+<li>因为总是从头往后（低地址向高地址）寻找闲置内存块，所以分配过程时间复杂度为O(N);</li>
+<li>对于C/C++等语言来说，分配的堆内存需要程序员手动回收，对于Java语言来说，GC线程可自动回收。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IT/" rel="tag">#IT</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/04/LeetCode-Longest-Palindromic-Substring/" rel="next" title="LeetCode第五题——求最大回文字符串">
+                <i class="fa fa-chevron-left"></i> LeetCode第五题——求最大回文字符串
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/12/what-really-happens-when-you-navigate-to-a-url/" rel="prev" title="当我们访问www.baidu.com的时候，会发生什么？">
+                当我们访问www.baidu.com的时候，会发生什么？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -339,6 +418,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/06/the-difference-between-heap-and-stack/"
+           data-title="堆与栈的区别" data-url="http://detac.github.io/2016/04/06/the-difference-between-heap-and-stack/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -358,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="//cdn.ohao.ren/avatar.jpg"
@@ -438,6 +534,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构中的栈"><span class="nav-number">1.</span> <span class="nav-text">数据结构中的栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构中的堆"><span class="nav-number">2.</span> <span class="nav-text">数据结构中的堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存栈"><span class="nav-number">3.</span> <span class="nav-text">内存栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存堆"><span class="nav-number">4.</span> <span class="nav-text">内存堆</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -541,11 +648,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
 
 
   
