@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  576
+                  581
                 </span>
               
 
@@ -402,20 +402,26 @@
       
 
       
-        <p>在学习node.js过程中，往往忽略了对JavaScript基础的学习，一下做一个简要的列举。<br><a id="more"></a></p>
+        <p>在学习node.js过程中，往往忽略了对JavaScript基础的学习，一下做一个简要的列举。</p>
+<a id="more"></a>
 <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h3><p>想想一下在Java中，如果我们这样写一段程序：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">true</span>)&#123;</div><div class="line">	<span class="keyword">int</span> a = <span class="number">5</span>;</div><div class="line">&#125;</div><div class="line">System.out.println(a);</div></pre></td></tr></table></figure>
+
 <p>当然是有问题了，在Java/C等语言中，一段花括号就是一个独立的作用域，在作用域内定义的整形变量a，在花括号外相当于超出了作用域。而在JavaScript中,如果我们这样写：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">5</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a);<span class="comment">//输出5</span></div></pre></td></tr></table></figure>
+
 <p>这样做事完全<strong>合法</strong>的。是因为：这是因为在JavaScript中，作用域完全由函数来决定，而if/for等语􏷡中的花括􏷝不是􏴚􏱋独立的作用域。</p>
 <h3 id="第二个例子"><a href="#第二个例子" class="headerlink" title="第二个例子"></a>第二个例子</h3><p>我们继续写一段程序：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> obj = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(a);</div><div class="line">	<span class="keyword">var</span> a = <span class="number">5</span>;</div><div class="line">&#125;</div><div class="line">obj();<span class="comment">//输出3</span></div></pre></td></tr></table></figure>
+
 <p>我们再其中再加入一行<code>var = 5;</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> obj = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(a);</div><div class="line">	<span class="keyword">var</span> a = <span class="number">5</span>;</div><div class="line">&#125;</div><div class="line">obj();<span class="comment">//输出undefined</span></div></pre></td></tr></table></figure>
+
 <p>在JavaScript中，变量的搜索顺序为：<strong>由内到外，顺序搜索。</strong> </p>
 <p>在第一段例子中，console.log()会先搜索obj中是否存在变量a，没有若搜索到，所以继续向外层作用域进行搜索，所以可以看到输出为3的结果。</p>
 <p>在第二段例子中，现在obj中搜索到 <code>var a = 5;</code>时，变量a存在，那么便不进行继续向外搜索。然而当程序执行到<code>console.log()</code>时，当前作用域内的a还未被初始化，所以输出 undefined的结果。</p>
 <h3 id="第三个例子"><a href="#第三个例子" class="headerlink" title="第三个例子"></a>第三个例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	b = <span class="number">6</span>;</div><div class="line">	<span class="built_in">console</span>.log(a);<span class="comment">//最外层定义，变量属于全局作用域</span></div><div class="line">&#125;</div><div class="line">f();</div><div class="line"><span class="built_in">console</span>.log(b);<span class="comment">//隐式定义，变量属于全局作用域</span></div></pre></td></tr></table></figure>
+
 <p><strong>全局作用域</strong>:顾名思义，对象在全局中都可以随时被引用。这里需要注意的是，隐式定义的变量（即不通过var定义的变量）会定义在全局作用域中，隐式定义的使用会经常出现定义了变量但被我们忘记的情况，不仅不违反了模块化编程的原则，还经常会对程序造成非常不好的影响，所以，我们在任何地方都不应该使用隐式定义。</p>
 
       
@@ -588,7 +594,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -697,7 +703,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -711,7 +717,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 

@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  125
+                  134
                 </span>
               
 
@@ -404,8 +404,12 @@
       
 
       
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>最近在用Thinkphp 3.1 版本给学校写一个志愿者平台，在定向页面中遇到定向页面出错的问题。<br>如图，每当使用 <code>$this-&gt;error()</code> 或者 <code>$this-&gt;success()</code> 时候总是会出错，调试模式显示出错位置如下：<br><img src="http://cdn.ohao.ren/thinkphp-493681447504926.jpg" alt="thinkphp error"><br><a id="more"></a><br>明显可以发现 是default 和layout.html中间少了一个斜杠导致。  </p>
-<h2 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h2><p>按照提示找到Thinkphp/Lib/Template/ThinkTemplate.class.php  112行左右处,修改为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$layoutFile = THEME_PAHT.&apos;/&apos;.C(&apos;LAYOUT_NAME&apos;).$this-&gt;config[&apos;template_suffix&apos;];</div></pre></td></tr></table></figure></p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>最近在用Thinkphp 3.1 版本给学校写一个志愿者平台，在定向页面中遇到定向页面出错的问题。<br>如图，每当使用 <code>$this-&gt;error()</code> 或者 <code>$this-&gt;success()</code> 时候总是会出错，调试模式显示出错位置如下：<br><img src="http://cdn.ohao.ren/thinkphp-493681447504926.jpg" alt="thinkphp error">  </p>
+<a id="more"></a>  
+<p>明显可以发现 是default 和layout.html中间少了一个斜杠导致。  </p>
+<h2 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h2><p>按照提示找到Thinkphp/Lib/Template/ThinkTemplate.class.php  112行左右处,修改为:  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$layoutFile = THEME_PAHT.&apos;/&apos;.C(&apos;LAYOUT_NAME&apos;).$this-&gt;config[&apos;template_suffix&apos;];</div></pre></td></tr></table></figure>
+
 <p> 即可。</p>
 
       
@@ -576,7 +580,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -685,7 +689,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -699,7 +703,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 

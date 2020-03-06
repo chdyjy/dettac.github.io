@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ohao.ren/2020/03/06/vue-jest-utils--Error-Requires-Babel-7.0.0-but-was-loaded-with-6.26.3-solution/</loc>
+    
+    <lastmod>2020-03-06T04:35:19.273Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ohao.ren/about/index.html</loc>
     
     <lastmod>2018-02-21T07:08:06.000Z</lastmod>

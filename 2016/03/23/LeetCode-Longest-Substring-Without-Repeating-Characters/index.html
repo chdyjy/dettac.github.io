@@ -374,7 +374,7 @@ Given a string, find the length of the longest substring without repeating chara
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  363
+                  388
                 </span>
               
 
@@ -390,7 +390,7 @@ Given a string, find the length of the longest substring without repeating chara
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -417,9 +417,12 @@ Given a string, find the length of the longest substring without repeating chara
 <p>Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.</p>
 </blockquote>
 <p>也就是说，在不重复字符串的前提下，找到一个给定字符串的最长值。</p>
-<p>拿到这道题，脑子里第一反应就是，只用遍历数组，不使用复杂数据类型的，应该是最快的，因为访问数组的下标比较快，只需要三次数组循环就可搞定。迅速开始构思，提交。<br><a id="more"></a><br>毕竟年轻人啊，too navie</p>
+<p>拿到这道题，脑子里第一反应就是，只用遍历数组，不使用复杂数据类型的，应该是最快的，因为访问数组的下标比较快，只需要三次数组循环就可搞定。迅速开始构思，提交。</p>
+<a id="more"></a>
+<p>毕竟年轻人啊，too navie</p>
 <p>使用循环做题，981个测试用例通过，共用了220ms，220毫秒什么概念，只打败了0.77%的人，前三题中最差成绩~~！先把代码贴出来，是循环太多导致速度慢的吗？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</div><div class="line">		<span class="keyword">char</span> c[] = s.toCharArray();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (c.length == <span class="number">1</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line">		<span class="comment">// start索引循环</span></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> start = <span class="number">0</span>; start &lt; c.length - <span class="number">1</span>; start++) &#123;</div><div class="line">			<span class="comment">// end索引循环</span></div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> end = start; end &lt; c.length; end++) &#123;</div><div class="line">				<span class="keyword">if</span> (c.length &gt; end + <span class="number">1</span>) &#123;</div><div class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> pos = start; pos &lt;= end; pos++) &#123;</div><div class="line">						<span class="keyword">if</span> (c[pos] == c[end + <span class="number">1</span>]) &#123;</div><div class="line">							len = len &gt; (end - start + <span class="number">1</span>) ? len : (end - start + <span class="number">1</span>);</div><div class="line">							flag = <span class="keyword">true</span>;</div><div class="line">							<span class="keyword">break</span>;</div><div class="line">						&#125;</div><div class="line">						<span class="keyword">if</span>(pos == end)&#123;</div><div class="line">							len = len &gt; (end - start + <span class="number">2</span>) ? len : (end - start + <span class="number">2</span>);</div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				<span class="keyword">if</span> (flag == <span class="keyword">true</span>) &#123;</div><div class="line">				    flag = <span class="keyword">false</span>;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> len;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
 <p>今天太晚，就不重新实现了，晚安！</p>
 
       
@@ -583,7 +586,7 @@ Given a string, find the length of the longest substring without repeating chara
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -676,7 +679,7 @@ Given a string, find the length of the longest substring without repeating chara
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -690,7 +693,7 @@ Given a string, find the length of the longest substring without repeating chara
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 

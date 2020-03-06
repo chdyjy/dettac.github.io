@@ -377,7 +377,7 @@ Given a string S, find the lon">
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  616
+                  646
                 </span>
               
 
@@ -393,7 +393,7 @@ Given a string S, find the lon">
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -421,6 +421,7 @@ Given a string S, find the lon">
 <p>Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.</p>
 </blockquote>
 <a id="more"></a>
+
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>回文，就是一个字符串正着念和反着念都一样，比如“abcba”，比如“上海自来水来自还上”，比如“明天到操场….”。</p>
 <p>对于这道算法题研究的英文字符串来说，有<strong>奇数回文</strong>和<strong>偶数回文</strong>两种情况。奇数回文是指回文字符串是奇数个，比如<code>abcba</code>；偶数回文是指回文字符串是偶数个，比如<code>abba</code>。在设计算法的时候应该把这两种情况都考虑在内。</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
@@ -434,6 +435,7 @@ Given a string S, find the lon">
 </ol>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>我的算法比较简单，个人感觉比较好理解，代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		<span class="keyword">char</span>[] c = s.toCharArray();</div><div class="line">		</div><div class="line">		<span class="keyword">int</span> evenPos = <span class="number">1</span>,oddPos = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> evenLen = <span class="number">0</span>,oddLen = <span class="number">0</span>;</div><div class="line">		</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c.length - <span class="number">1</span>; i++) &#123;</div><div class="line">			<span class="keyword">int</span> oddCount = <span class="number">0</span>;</div><div class="line">			<span class="keyword">int</span> evenCount = <span class="number">0</span>;</div><div class="line">			<span class="comment">// 奇数回文</span></div><div class="line">			<span class="keyword">while</span> (i - oddCount &gt;= <span class="number">0</span> &amp;&amp; i + oddCount &lt;= c.length - <span class="number">1</span> &amp;&amp; c[i - oddCount] == c[i + oddCount]) &#123;</div><div class="line">				<span class="keyword">if</span> (oddCount &gt; oddLen) &#123;</div><div class="line">					oddLen = oddCount;</div><div class="line">					oddPos = i;</div><div class="line">				&#125;</div><div class="line">				oddCount++;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">// 偶数回文</span></div><div class="line">			<span class="keyword">while</span> (i - <span class="number">1</span> - evenCount &gt;= <span class="number">0</span> &amp;&amp; i + evenCount &lt;= c.length - <span class="number">1</span> &amp;&amp; c[i - <span class="number">1</span> - evenCount] == c[i + evenCount]) &#123;</div><div class="line">				evenCount++;</div><div class="line">				<span class="keyword">if</span> (evenCount &gt; evenLen) &#123;</div><div class="line">					evenLen = evenCount;</div><div class="line">					evenPos = i;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">char</span>[] palindromeArray = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">if</span>(evenLen&gt;oddLen)&#123;</div><div class="line">			<span class="comment">//输出偶数回文</span></div><div class="line">			palindromeArray = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">2</span> * evenLen];</div><div class="line">			System.arraycopy(c, evenPos-evenLen, palindromeArray, <span class="number">0</span>, <span class="number">2</span> * evenLen);</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="comment">//输出奇数回文</span></div><div class="line">			palindromeArray = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">2</span> * oddLen + <span class="number">1</span>];</div><div class="line">			System.arraycopy(c, oddPos-oddLen, palindromeArray, <span class="number">0</span>, <span class="number">2</span> * oddLen+<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		String palindrome = <span class="keyword">new</span> String(palindromeArray);</div><div class="line">		<span class="keyword">return</span> palindrome;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -605,7 +607,7 @@ Given a string S, find the lon">
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -714,7 +716,7 @@ Given a string S, find the lon">
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -728,7 +730,7 @@ Given a string S, find the lon">
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 

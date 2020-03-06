@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="IT,JAVA,LeetCode," />
+  <meta name="keywords" content="IT,LeetCode,JAVA," />
 
 
 
@@ -374,7 +374,7 @@ You are given two linked lists representing two non-negative numbers. The digits
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  481
+                  516
                 </span>
               
 
@@ -417,13 +417,16 @@ You are given two linked lists representing two non-negative numbers. The digits
 <p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br><strong>Input</strong>: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>Output</strong>: 7 -&gt; 0 -&gt; 8</p>
 </blockquote>
 <p>似乎很简单嘛，两个非负的单向链表，“in reverse order”是反向的意思，那我们就把第二组数反向，243 + 465 = 708 ，终于凑出了答案，不过这样也不难嘛。。</p>
-<p><strong>============【以上为大误】===========</strong><br><a id="more"></a><br>迅速不惜一切代价提交了代码，显示出错，输入[5,5] 运行结果为[1,0]，而正确结果为[0,1]。:-(</p>
+<p><strong>============【以上为大误】===========</strong></p>
+<a id="more"></a>
+<p>迅速不惜一切代价提交了代码，显示出错，输入[5,5] 运行结果为[1,0]，而正确结果为[0,1]。:-(</p>
 <p>他妹的怎么会是[0,1]！怎么凑也凑不成[0,1]！</p>
 <p>于是继续读题，才明白原来根本不是链表逆转，而是加法的进制是逆着进位的：</p>
 <p>&nbsp; 2  &nbsp; 4  &nbsp; 3<br>+5  &nbsp; 6  &nbsp; 4<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <sub>1</sub><br>———————<br>&nbsp; 7  &nbsp; 0  &nbsp; 8</p>
 <p>英语渣兼职不能忍呀-。-！</p>
 <p>于是仔细分析，循环遍历每个节点，若和大于10，则用一个进位变量hex保存进位在下一次循环中加1，可以用取模<code>(tmp % 10)</code>和取余<code>(tmp / 10)</code>的方式来实现，最后一次循环若和大于10，在链表末尾添加值为<code>1</code>的节点。代码为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for singly-linked list.</div><div class="line"> * public class ListNode &#123;</div><div class="line"> *     int val;</div><div class="line"> *     ListNode next;</div><div class="line"> *     ListNode(int x) &#123; val = x; &#125;</div><div class="line"> * &#125;</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> ListNode <span class="title">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">		ListNode firstNode = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</div><div class="line">		ListNode tmpNode = firstNode;</div><div class="line">		<span class="keyword">int</span> hex = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span> (l1 != <span class="keyword">null</span> || l2 != <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="keyword">int</span> valOfL1 = <span class="number">0</span>;</div><div class="line">			<span class="keyword">int</span> valOfL2 = <span class="number">0</span>;</div><div class="line">			<span class="keyword">if</span> (l1 != <span class="keyword">null</span>) &#123;</div><div class="line">				valOfL1 = l1.val;</div><div class="line">				l1 = l1.next;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (l2 != <span class="keyword">null</span>) &#123;</div><div class="line">				valOfL2 = l2.val;</div><div class="line">				l2 = l2.next;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">int</span> tmp = valOfL1 + valOfL2 + hex;</div><div class="line">			hex = tmp / <span class="number">10</span>;</div><div class="line">			tmpNode.next = <span class="keyword">new</span> ListNode(tmp %<span class="number">10</span>);</div><div class="line">			tmpNode = tmpNode.next;</div><div class="line">		&#125;	</div><div class="line">		<span class="keyword">if</span>(hex == <span class="number">1</span>)&#123;</div><div class="line">			tmpNode.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</div><div class="line">		&#125;	</div><div class="line">		<span class="keyword">return</span> firstNode.next;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
 <p>暂时还没有想到更快的办法解决这个问题，还是得滚回去翻数据结构啦。。另外对比了一下其他语言的实现，JAVA为什么会比C和C++更快呢？</p>
 
       
@@ -468,9 +471,9 @@ You are given two linked lists representing two non-negative numbers. The digits
           
             <a href="/tags/IT/" rel="tag"># IT</a>
           
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
-          
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
         </div>
       
@@ -587,7 +590,7 @@ You are given two linked lists representing two non-negative numbers. The digits
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -680,7 +683,7 @@ You are given two linked lists representing two non-negative numbers. The digits
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -694,7 +697,7 @@ You are given two linked lists representing two non-negative numbers. The digits
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 

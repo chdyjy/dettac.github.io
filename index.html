@@ -283,6 +283,223 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ohao.ren/2020/03/06/vue-jest-utils--Error-Requires-Babel-7.0.0-but-was-loaded-with-6.26.3-solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="//cdn.ohao.ren/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="哦，好人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/06/vue-jest-utils--Error-Requires-Babel-7.0.0-but-was-loaded-with-6.26.3-solution/" itemprop="url">未命名</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-06T12:34:39+08:00">
+                2020-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/06/vue-jest-utils--Error-Requires-Babel-7.0.0-but-was-loaded-with-6.26.3-solution/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/vue-jest-utils--Error-Requires-Babel-7.0.0-but-was-loaded-with-6.26.3-solution/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/03/06/vue-jest-utils--Error-Requires-Babel-7.0.0-but-was-loaded-with-6.26.3-solution/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  578
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="vue-jest-utils-报错：“Requires-Babel-“-7-0-0-0”-but-was-loaded-with-“6-26-3”-”解决思路"><a href="#vue-jest-utils-报错：“Requires-Babel-“-7-0-0-0”-but-was-loaded-with-“6-26-3”-”解决思路" class="headerlink" title="vue-jest-utils 报错：“Requires Babel “^7.0.0-0”, but was loaded with “6.26.3”.”解决思路"></a>vue-jest-utils 报错：“Requires Babel “^7.0.0-0”, but was loaded with “6.26.3”.”解决思路</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>使用vue-test-utils编写测试用例，运行<code>npm run test</code>是，报错：</p>
+<blockquote>
+<p>Test suite failed to run<br>Requires Babel “^7.0.0-0”, but was loaded with “6.26.3”.</p>
+</blockquote>
+<p>如图所示：</p>
+<p><img src="http://cdn.ohao.ren/2020-03-06-15833939192796.jpg" alt=""></p>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ol>
+<li>升级Babel</li>
+<li>package.json 与 package-lock.json</li>
+<li>babel-regsiter 与 babel-core </li>
+</ol>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><p>Babel是一个广泛使用的转码器，可以将ES6代码转为ES5代码，从而在现有环境执行，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 转码前</span></div><div class="line">input.map(<span class="function"><span class="params">item</span> =&gt;</span> item + <span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="comment">// 转码后</span></div><div class="line">input.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> item + <span class="number">1</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+<p>运行 <code>npx babel-upgrade</code> 进行升级，依然有错误。仔细寻找后发现:</p>
+<p>package.json 中的依赖 <code>@babel/core</code>版本号为7.8.0，而package-lock.json 中 <code>bebel-regsiter</code>的依赖<code>babel-core</code> 版本号为 6.26.3。与报错信息吻合，这就引出了两个问题：</p>
+<ol>
+<li>package.json 与 package-lock.json 是什么关系？</li>
+<li>babel-register 与 babel-core 具体是什么关系，是否可以升级babel-register?</li>
+</ol>
+<p><img src="http://cdn.ohao.ren/2020-03-06-15833944450311.jpg" alt=""></p>
+<p><img src="http://cdn.ohao.ren/2020-03-06-15833945044446.jpg" alt=""></p>
+<h3 id="package-json-与-package-lock-json"><a href="#package-json-与-package-lock-json" class="headerlink" title="package.json 与 package-lock.json"></a>package.json 与 package-lock.json</h3><p>package.json</p>
+<blockquote>
+<p>package.json是通过npm init创建时生成的，package.json文件中会记录项目中所需要的模块。记录的只是每个模块的基本信息。模块名称和大版本信息。</p>
+</blockquote>
+<p>package-lock.json</p>
+<blockquote>
+<p>在使用npm install的时候会自动生成一个package-lock.json的文件，package-lock.json文件则会记录每个模块的详细信息，如模块的具体版本号和各个模块所依赖的子模块的信息。</p>
+</blockquote>
+<h3 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h3><p>这时候可能有一种猜测，babel-register的依赖版本可能有问题，那什么是babel-register?</p>
+<blockquote>
+<p>一个使用 Babel 的方法是通过 require 钩子。</p>
+</blockquote>
+<p>在package-lock.json里面寻找发现，既有<code>@babel/register</code> 的依赖（版本号：7.8.6），又有 <code>babel-register</code> 依赖（版本号：6.26.X）</p>
+<p>是不是因为依赖重复了？</p>
+<p>发现 <code>vue-jest</code> 有低版本的<code>babel-core</code>依赖,<br><img src="http://cdn.ohao.ren/2020-03-06-15834238219838.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev vue-jest</div><div class="line">npm install --save-dev babel-core@bridge // 重要</div></pre></td></tr></table></figure>
+
+<h3 id="babel-conf-js"><a href="#babel-conf-js" class="headerlink" title="babel.conf.js"></a>babel.conf.js</h3><p>依然有错误，提示在<code>/node_modules/vant/</code>库中有问题。为什么只有vant库有问题呢？<br>这时候找到了babel.conf.js文件。<br><img src="http://cdn.ohao.ren/2020-03-06-15834643217220.jpg" alt=""></p>
+<p>Babel.conf.js 是Babel7以上的配置文件，在配置文件中发现一个配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  "import",</div><div class="line">  &#123;</div><div class="line">    "libraryName": "vant",</div><div class="line">    "libraryDirectory": "es",</div><div class="line">    "style": true</div><div class="line">  &#125;</div><div class="line">],</div></pre></td></tr></table></figure>
+
+<p>原来在这里，注释掉之后，运行 <code>npm run test</code></p>
+<p><img src="http://cdn.ohao.ren/2020-03-06-15834644931142.jpg" alt=""></p>
+<p>成功，大功告成。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://ohao.ren/2016/10/04/LeetCode-6-zigzag-conversion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,7 +606,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  501
+                  549
                 </span>
               
 
@@ -438,7 +655,7 @@
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>意思比较容易理解，即将一个字符串以“Z”字型排布后，返回按行读取的字符串。</p>
 <p>第一想法：建立一个二维数组strArray,用strArray[x][y]保存每一个字符，最后按照数组的路径读取。<br><img src="http://cdn.ohao.ren/2016-10-04-14755800616918.jpg" alt=""></p>
 <p>草稿纸上写了伪代码就多的不要不要的，各种某个位置得挨个判断是否为空，于是换一种思路。</p>
-<p>以输入<code>&quot;PAYPALISHIRING&quot;</code>为例，仔细观察形式，我们可以把每个元素按照下图所示分组：<br><img src="http://cdn.ohao.ren/2016-10-04-test.png" alt="test"><br>
+<p>以输入<code>&quot;PAYPALISHIRING&quot;</code>为例，仔细观察形式，我们可以把每个元素按照下图所示分组：<br><img src="http://cdn.ohao.ren/2016-10-04-test.png" alt="test"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/10/04/LeetCode-6-zigzag-conversion/#more" rel="contents">
@@ -598,7 +815,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  223
+                  240
                 </span>
               
 
@@ -800,7 +1017,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  694
+                  738
                 </span>
               
 
@@ -999,7 +1216,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,288
+                  1.3k
                 </span>
               
 
@@ -1015,7 +1232,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  4
                 </span>
               
             </div>
@@ -1038,7 +1255,7 @@
       
         
           <p>答：“如果打开了，就说明网好着呢”</p>
-<p>以谷歌浏览器为例，在浏览器中输入“www.baidu.com”，按下回车。而“www.baidu.com”只是一个域名，我们得知道域名对应的地址才行。就像要去小明家，必须先知道小明家的地址才可以，所以就要进行第一个步骤：DNS lookup（DNS:Domain Name System）。</p>
+<p>以谷歌浏览器为例，在浏览器中输入“<a href="http://www.baidu.com”，按下回车。而“www.baidu.com”只是一个域名，我们得知道域名对应的地址才行。就像要去小明家，必须先知道小明家的地址才可以，所以就要进行第一个步骤：DNS">www.baidu.com”，按下回车。而“www.baidu.com”只是一个域名，我们得知道域名对应的地址才行。就像要去小明家，必须先知道小明家的地址才可以，所以就要进行第一个步骤：DNS</a> lookup（DNS:Domain Name System）。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/04/12/what-really-happens-when-you-navigate-to-a-url/#more" rel="contents">
@@ -1198,7 +1415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  492
+                  483
                 </span>
               
 
@@ -1214,7 +1431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -1374,7 +1591,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  616
+                  646
                 </span>
               
 
@@ -1390,7 +1607,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -1555,7 +1772,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  363
+                  388
                 </span>
               
 
@@ -1571,7 +1788,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -1599,7 +1816,7 @@
 <p>Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.</p>
 </blockquote>
 <p>也就是说，在不重复字符串的前提下，找到一个给定字符串的最长值。</p>
-<p>拿到这道题，脑子里第一反应就是，只用遍历数组，不使用复杂数据类型的，应该是最快的，因为访问数组的下标比较快，只需要三次数组循环就可搞定。迅速开始构思，提交。<br>
+<p>拿到这道题，脑子里第一反应就是，只用遍历数组，不使用复杂数据类型的，应该是最快的，因为访问数组的下标比较快，只需要三次数组循环就可搞定。迅速开始构思，提交。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/03/23/LeetCode-Longest-Substring-Without-Repeating-Characters/#more" rel="contents">
@@ -1737,7 +1954,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  481
+                  516
                 </span>
               
 
@@ -1781,7 +1998,7 @@
 <p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.<br><strong>Input</strong>: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br><strong>Output</strong>: 7 -&gt; 0 -&gt; 8</p>
 </blockquote>
 <p>似乎很简单嘛，两个非负的单向链表，“in reverse order”是反向的意思，那我们就把第二组数反向，243 + 465 = 708 ，终于凑出了答案，不过这样也不难嘛。。</p>
-<p><strong>============【以上为大误】===========</strong><br>
+<p><strong>============【以上为大误】===========</strong></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/03/21/LeetCode-Add-Two-Numbers/#more" rel="contents">
@@ -1919,7 +2136,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  625
+                  668
                 </span>
               
 
@@ -1960,200 +2177,16 @@
           <p>今日发现一好玩的刷题网站<a href="https://leetcode.com">leetcode</a>。根据指定的编程语言，会选择生成相应的题目，将题目补充完整提交后，系统会给出检测报告。</p>
 <h2 id="第一题-“Two-Sum”"><a href="#第一题-“Two-Sum”" class="headerlink" title="第一题 “Two Sum”"></a>第一题 “<strong>Two Sum</strong>”</h2><p>原题为：</p>
 <blockquote>
-<p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution.<br><strong>Example</strong>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</div><div class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</div><div class="line"></div><div class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</div></pre></td></tr></table></figure></p>
+<p>Given an array of integers, return <strong>indices</strong> of the two numbers such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly</strong> one solution.<br><strong>Example</strong>:  </p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Given nums = [<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], target = <span class="number">9</span>,</div><div class="line">Because nums[<span class="number">0</span>] + nums[<span class="number">1</span>] = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span>,</div><div class="line"></div><div class="line"><span class="keyword">return</span> [<span class="number">0</span>, <span class="number">1</span>].</div></pre></td></tr></table></figure>
+
+<blockquote>
 <p>The return format had been changed to zero-based indices. Please read the above updated description carefully.  </p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/03/20/LeetCode-Two-Sum/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://ohao.ren/2016/03/16/the-basics-of-ontology/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="//cdn.ohao.ren/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="哦，好人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/16/the-basics-of-ontology/" itemprop="url">本体基础知识（一）</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-16T20:24:02+08:00">
-                2016-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/03/16/the-basics-of-ontology/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2016/03/16/the-basics-of-ontology/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/03/16/the-basics-of-ontology/" class="leancloud_visitors" data-flag-title="本体基础知识（一）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,157
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="本体基础知识"><a href="#本体基础知识" class="headerlink" title="本体基础知识"></a>本体基础知识</h2><p>本体建模的核心是明确领域中的概念、概念的属性和约束条件、概念之间的层次关系等。本体的<strong>建模原语</strong>主要有类、关系、函数、公理和实例等5种。</p>
-<ul>
-<li><strong>类</strong>：通常也成为概念，类的含义很广泛，可以指任何事物，如工作描述、功能、行为、策略和推理过程等等。类中间的关系有四种：<ol>
-<li>part-of：A 属于 B的一部分</li>
-<li>kind-of：A 属于 B的另一种</li>
-<li>instance-of：A是B的实例</li>
-<li>attribute-of：A是B的属性</li>
-</ol>
-</li>
-<li><strong>关系</strong>：代表了在领域中概念之间的交互作用。形式上定义为n维笛卡儿积的子R:C<sub>1</sub>×C<sub>2</sub>×⋯×C<sub>n</sub></li>
-<li><strong>函数</strong>：一类特殊的关系,这种关系中,前n一1个元素可以唯一决定第n个元素,形式化的定义为F: C<sub>1</sub>×C<sub>2</sub>×⋯×C<sub>n-1</sub>➡ C<sub>n</sub></li>
-<li><strong>公理</strong>：表示永真字句</li>
-<li><p><strong>实例</strong>：代表元素，是概念的具体化</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/03/16/the-basics-of-ontology/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2245,7 +2278,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2338,7 +2371,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -2352,7 +2385,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 

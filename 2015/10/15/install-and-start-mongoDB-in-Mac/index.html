@@ -84,9 +84,11 @@
 <meta name="description" content="##安装
 直接请出包管理工具“Homebrew”大神
 1brew update
+
 1brew install mongodb
+
 成功后提示
-123456To have launchd start mongodb at login:  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgentsThen to load mongodb now">
+123456To have launchd start mongodb at login:  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgentsThen to load mongodb n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac下安装并启动MongoDB">
 <meta property="og:url" content="http://ohao.ren/2015/10/15/install-and-start-mongoDB-in-Mac/index.html">
@@ -94,18 +96,22 @@
 <meta property="og:description" content="##安装
 直接请出包管理工具“Homebrew”大神
 1brew update
+
 1brew install mongodb
+
 成功后提示
-123456To have launchd start mongodb at login:  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgentsThen to load mongodb now">
+123456To have launchd start mongodb at login:  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgentsThen to load mongodb n">
 <meta property="og:updated_time" content="2016-04-05T06:44:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac下安装并启动MongoDB">
 <meta name="twitter:description" content="##安装
 直接请出包管理工具“Homebrew”大神
 1brew update
+
 1brew install mongodb
+
 成功后提示
-123456To have launchd start mongodb at login:  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgentsThen to load mongodb now">
+123456To have launchd start mongodb at login:  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgentsThen to load mongodb n">
 
 
 
@@ -380,7 +386,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  168
+                  161
                 </span>
               
 
@@ -420,19 +426,25 @@
         <p>##安装</p>
 <p>直接请出包管理工具“Homebrew”大神</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew update</div></pre></td></tr></table></figure>
+
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install mongodb</div></pre></td></tr></table></figure>
+
 <p>成功后提示</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">To have launchd start mongodb at login:</div><div class="line">  ln -sfv /usr/local/opt/mongodb/*.plist ~/Library/LaunchAgents</div><div class="line">Then to load mongodb now:</div><div class="line">  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist</div><div class="line">Or, if you don&apos;t want/need launchctl, you can just run:</div><div class="line">  mongod --config /usr/local/etc/mongod.conf</div></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <p>##Tips</p>
 <ol>
 <li><p>若遇到遇到提示：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2016-03-10T23:31:23.370+0800 I STORAGE  [initandlisten] exception in 	initAndListen: 29 Data directory /data/db not found., terminating</div><div class="line">2016-03-10T23:31:23.371+0800 I CONTROL  [initandlisten] dbexit:  rc: 100</div></pre></td></tr></table></figure>
+
 <p> 为了方便学习，改变db目录至自己工作目录即可</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mongod --dbpath /Users/yang/Desktop/node/blog/db</div></pre></td></tr></table></figure>
 </li>
 <li><p>若遇到出错提示：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Server Crashing: Aborting after</div><div class="line">invariant() failture</div></pre></td></tr></table></figure>
+
 <p> 权限不够,加sudo即可。</p>
 </li>
 </ol>
@@ -596,7 +608,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -689,7 +701,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -703,7 +715,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">13.5k</span>
+    <span title="Site words total count">14.5k</span>
   
 </div>
 
